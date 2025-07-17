@@ -105,17 +105,17 @@ if uploaded_file:
 
     # Strategy settings
     rank_filter_enabled = True
-    allowed_predicted_ranks = [1, 2]
+    allowed_predicted_ranks = [3,4]
     daily_bankroll = 10000
     bankroll_perc = 0.1
     stake_pool = daily_bankroll * bankroll_perc
-    min_ev_threshold = 0.10
-    min_kelly_fraction = 0.01
-    max_odds_threshold = 100.0
+    min_ev_threshold = 0.1
+    min_kelly_fraction = 0.04
+    max_odds_threshold = 10.1
     winrate_filter_type = 'none'
     fixed_winrate_threshold = 0.03
-    min_runners = 5
-    max_runners = 6
+    min_runners = 6
+    max_runners = 7
 
     predictions['Reject_Reason'] = ''
     if rank_filter_enabled:
