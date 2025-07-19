@@ -16,7 +16,7 @@ data['Expected_Value'] = (data['Predicted_Win_Probability'] * (data['Odds_To_Use
 bankroll = 10000
 bankroll_perc = 0.1
 min_ev = -5
-min_kelly = -1
+min_kelly = -0.5
 max_odds = 100.0
 winrate_filter_type = 'none'  # or 'fixed', 'dynamic'
 fixed_winrate_threshold = 0.03
@@ -27,7 +27,7 @@ reverse_results = []
 # ✅ Loop over races
 for race_id, race_df in data.groupby('Race_ID', sort=False):
     full_field_size = len(race_df)
-    if not ((4 <= full_field_size <= 7) or (full_field_size >= 41)):
+    if not ((4 <= full_field_size <= 6) or (full_field_size >= 41)):
         continue
 
     full_race = race_df.copy()
@@ -35,7 +35,7 @@ for race_id, race_df in data.groupby('Race_ID', sort=False):
     stake_pool = bankroll * bankroll_perc
 
     # Get predicted rank 1 and 2
-    top_two = full_race[full_race['Predicted_Rank'].isin([1, 2])].sort_values('Predicted_Rank')
+    top_two = full_race[full_race['Predicted_Rank'].isin([1,2])].sort_values('Predicted_Rank')
     if len(top_two) != 2:
         continue
 
