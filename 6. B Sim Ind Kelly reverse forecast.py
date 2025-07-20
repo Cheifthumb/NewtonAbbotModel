@@ -1,7 +1,7 @@
 import pandas as pd
 
 # ✅ Load data
-data = pd.read_csv('Betting_Simulation/predicted_win_probabilities.24-25.csv')
+data = pd.read_csv('Betting_Simulation/predicted_win_probabilities.23-23.csv')
 data['Place'] = pd.to_numeric(data['Place'], errors='coerce')
 data = data.sort_values(by=['Date of Race', 'Time']).reset_index(drop=True)
 data['Race_ID'] = data['Date of Race'].astype(str) + "_" + data['Time'].astype(str)
@@ -27,7 +27,7 @@ reverse_results = []
 # ✅ Loop over races
 for race_id, race_df in data.groupby('Race_ID', sort=False):
     full_field_size = len(race_df)
-    if not ((4 <= full_field_size <= 6) or (full_field_size >= 41)):
+    if not ((4 <= full_field_size <= 10) or (full_field_size >= 41)):
         continue
 
     full_race = race_df.copy()
@@ -35,7 +35,7 @@ for race_id, race_df in data.groupby('Race_ID', sort=False):
     stake_pool = bankroll * bankroll_perc
 
     # Get predicted rank 1 and 2
-    top_two = full_race[full_race['Predicted_Rank'].isin([1,2])].sort_values('Predicted_Rank')
+    top_two = full_race[full_race['Predicted_Rank'].isin([2,3])].sort_values('Predicted_Rank')
     if len(top_two) != 2:
         continue
 

@@ -1,0 +1,8 @@
+git remote remove origin
+
+git remote add origin https://github.com/yourusername/your-new-repo.git
+
+git add .
+git commit -m "Initial commit for Ripon model"
+
+git push -u origin main

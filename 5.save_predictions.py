@@ -5,7 +5,7 @@ import xgboost as xgb
 from sklearn.preprocessing import LabelEncoder
 
 # Load your full featured dataset
-data = pd.read_excel('featured_data/24-25_featured.xlsx')
+data = pd.read_excel('featured_data/23-23_featured.xlsx')
 
 # Info columns to save (include real odds and Place)
 info_columns = [
@@ -38,7 +38,7 @@ X = X.fillna(-999)
 import joblib
 
 # Load trained Kempton model
-model = joblib.load('models/xgboost_tuned_model_02-23.pkl')  # ✅ Update the correct filename and path
+model = joblib.load('models/xgboost_tuned_model_02-22.pkl')  # ✅ Update the correct filename and path
 
 
 # Predict probabilities
@@ -49,5 +49,5 @@ output = data[info_columns].copy()
 output['Predicted_Win_Probability'] = win_probabilities
 
 # Save to CSV
-output.to_csv('Betting_Simulation/predicted_win_probabilities.24-25.csv', index=False)
+output.to_csv('Betting_Simulation/predicted_win_probabilities.23-23.csv', index=False)
 print("✅ Predictions saved with real odds to 'Betting_Simulation.csv'")
